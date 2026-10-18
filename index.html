@@ -865,14 +865,14 @@
                     <!-- Header & Logo -->
                     <div class="flex flex-col items-center my-auto">
                         <img src="https://lh3.googleusercontent.com/d/1twlFf-4SwwNwAXJQQH1Rb9zSY7PSIosL" alt="Logo" class="h-9 sm:h-12 object-contain mb-1">
-                        <h2 class="text-xs sm:text-base font-bold text-amber-900 tracking-tight leading-tight">โรงเรียนหนองบัวพิทยาคาร</h2>
+                        <h2 class="text-xs sm:text-base font-bold text-amber-900 tracking-tight leading-tight">มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตภูเก็ต</h2>
                         <p class="text-[9px] sm:text-xs text-slate-600 mt-0.5">ขอมอบเกียรติบัตรฉบับนี้ให้ไว้เพื่อแสดงว่า</p>
                         
                         <!-- Recipient -->
                         <h1 id="certModalName" class="text-sm sm:text-xl font-bold text-blue-900 tracking-tight mt-1.5 leading-snug">ชื่อ - นามสกุล (ใช้ออกเกียรติบัตร)</h1>
                         <p id="certModalSchool" class="text-[10px] sm:text-xs text-slate-700 font-medium mt-0.5">โรงเรียน... จังหวัด...</p>
                         <p id="certModalEvent" class="text-[8px] sm:text-[10px] text-slate-600 mt-1 max-w-sm sm:max-w-md mx-auto leading-relaxed">
-                            ได้เข้าร่วมกิจกรรมเปิดบ้านวิชาการ Open House ประจำปีการศึกษา 2569 และสะสมคะแนนรวมทั้งสิ้น XX คะแนน
+                            ได้เข้าร่วมได้เข้าร่วมโครงการ PSU Phuket Open House 2026 
                         </p>
                         <p class="text-[8px] sm:text-[9px] text-slate-500 mt-0.5 hidden sm:block">
                             ขอให้มีความสุขความเจริญและประสบความสำเร็จในหน้าที่การงานและการศึกษาตลอดไป
@@ -886,8 +886,8 @@
                         </div>
                         <div class="flex flex-col items-center">
                             <img src="https://lh3.googleusercontent.com/d/1egqGy6JaZCRiSO1MInp_D6GeoqIN9ZPK" alt="Signature" class="h-5 sm:h-8 object-contain mb-0.5">
-                            <div class="text-[9px] sm:text-xs font-bold text-slate-800 leading-tight">(ดร.กวีวัฒน์ ฤาชัยลาม)</div>
-                            <div class="text-[7px] sm:text-[9px] text-slate-500 leading-tight">(ผู้อำนวยการโรงเรียนหนองบัวพิทยาคาร)</div>
+                            <div class="text-[9px] sm:text-xs font-bold text-slate-800 leading-tight">(รองศาสตราจารย์ ดร.พันธ์ ทองชุมนุม)</div>
+                            <div class="text-[7px] sm:text-[9px] text-slate-500 leading-tight">(รองอธิการบดีวิทยาเขตภูเก็ต)</div>
                         </div>
                     </div>
                 </div>
@@ -2972,7 +2972,7 @@
             $('#certModalId').text('เลขที่: ' + certId);
             $('#certModalName').text(currentUser.name);
             $('#certModalSchool').text(`${currentUser.school || '-'} จังหวัด${currentUser.province || ''}`);
-            $('#certModalEvent').text(`ได้เข้าร่วม${CERT_ASSETS.eventName} และสะสมคะแนนรวมทั้งสิ้น ${totalPts} คะแนน`);
+            $('#certModalEvent').text(`ได้เข้าร่วม${CERT_ASSETS.eventName} `);
             $('#certModalDate').text('ให้ไว้ ณ วันที่ ' + todayThai);
 
             $('#certificatePreviewModal').removeClass('hidden');
