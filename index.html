@@ -195,7 +195,7 @@
             <div class="flex p-1 bg-slate-200/80 backdrop-blur-sm rounded-2xl mb-5 shadow-inner">
                 <button type="button" id="tabRegisterBtn" class="flex-1 py-2.5 px-3 rounded-xl font-semibold text-xs sm:text-sm transition-all duration-200 flex items-center justify-center gap-2 bg-white text-[#0062b8] shadow-sm">
                     <i class="fas fa-file-signature"></i>
-                    <span>แบบฟอร์มลงทะเบียน</span>
+                    <span>แบบฟอร์มลงทะเบียน/Registration Form</span>
                 </button>
                 <button type="button" id="tabQrCodeBtn" class="flex-1 py-2.5 px-3 rounded-xl font-semibold text-xs sm:text-sm transition-all duration-200 flex items-center justify-center gap-2 text-slate-600 hover:text-slate-900">
                     <i class="fas fa-qrcode"></i>
@@ -298,15 +298,15 @@
                                 </button>
                                 <button type="button" class="role-btn flex flex-col items-center justify-center p-3 rounded-2xl border-2 border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:text-slate-800 transition-all duration-200 shadow-sm" data-role="ครู">
                                     <i class="fas fa-chalkboard-user text-2xl mb-1.5"></i>
-                                    <span class="text-xs sm:text-sm font-semibold">ครู</span>
+                                    <span class="text-xs sm:text-sm font-semibold">ครู/Teacher</span>
                                 </button>
                                 <button type="button" class="role-btn flex flex-col items-center justify-center p-3 rounded-2xl border-2 border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:text-slate-800 transition-all duration-200 shadow-sm" data-role="ผู้ปกครอง">
                                     <i class="fas fa-users text-2xl mb-1.5"></i>
-                                    <span class="text-xs sm:text-sm font-semibold">ผู้ปกครอง</span>
+                                    <span class="text-xs sm:text-sm font-semibold">ผู้ปกครอง/Parent/Guardian</span>
                                 </button>
                                 <button type="button" class="role-btn flex flex-col items-center justify-center p-3 rounded-2xl border-2 border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:text-slate-800 transition-all duration-200 shadow-sm" data-role="บุคคลทั่วไป">
                                     <i class="fas fa-user text-2xl mb-1.5"></i>
-                                    <span class="text-xs sm:text-sm font-semibold">บุคคลทั่วไป</span>
+                                    <span class="text-xs sm:text-sm font-semibold">บุคคลทั่วไป/General Public</span>
                                 </button>
                             </div>
                         </div>
@@ -396,7 +396,7 @@
                         <!-- ระดับชั้นปี * (สำหรับ นักเรียน เท่านั้น) -->
                         <div id="gradeLevelGroup">
                             <label for="regGradeLevel" class="block text-sm font-semibold text-slate-700 mb-1.5">
-                                ระดับชั้นปี <span class="text-red-500">*</span>
+                                ระดับชั้นปี/Grade Level <span class="text-red-500">*</span>
                             </label>
                             <div class="relative">
                                 <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
@@ -407,14 +407,14 @@
                                     name="gradeLevel" 
                                     class="w-full pl-10 pr-10 py-3 rounded-2xl border border-slate-200 bg-white text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#0072ce] focus:border-transparent transition-all shadow-sm text-sm appearance-none cursor-pointer"
                                 >
-                                    <option value="" disabled selected>-- กรุณาเลือกระดับชั้นปี --</option>
-                                    <option value="มัธยมศึกษาตอนต้น">มัธยมศึกษาตอนต้น</option>
-                                    <option value="มัธยมศึกษาปีที่ 4">มัธยมศึกษาปีที่ 4</option>
-                                    <option value="มัธยมศึกษาปีที่ 5">มัธยมศึกษาปีที่ 5</option>
-                                    <option value="มัธยมศึกษาปีที่ 6">มัธยมศึกษาปีที่ 6</option>
-                                    <option value="ปวช. 1">ปวช. 1</option>
-                                    <option value="ปวช. 2">ปวช. 2</option>
-                                    <option value="ปวช. 3">ปวช. 3</option>
+                                    <option value="" disabled selected>-- กรุณาเลือกระดับชั้นปี/Please Select Your Grade Level --</option>
+                                    <option value="มัธยมศึกษาตอนต้น">มัธยมศึกษาตอนต้น/Lower Secondary School</option>
+                                    <option value="มัธยมศึกษาปีที่ 4">มัธยมศึกษาปีที่ 4/Grade 10 (M.4)</option>
+                                    <option value="มัธยมศึกษาปีที่ 5">มัธยมศึกษาปีที่ 5/Grade 11 (M.5)</option>
+                                    <option value="มัธยมศึกษาปีที่ 6">มัธยมศึกษาปีที่ 6/Grade 12 (M.6)</option>
+                                    <option value="ปวช. 1">ปวช. 1/Vocational Certificate Year 1</option>
+                                    <option value="ปวช. 2">ปวช. 2/Vocational Certificate Year 2</option>
+                                    <option value="ปวช. 3">ปวช. 3/Vocational Certificate Year 3</option>
                                 </select>
                                 <span class="absolute inset-y-0 right-0 pr-3.5 flex items-center pointer-events-none text-slate-400">
                                     <i class="fas fa-chevron-down text-xs"></i>
@@ -430,7 +430,7 @@
                                 class="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-[#0062b8] to-[#0084d6] hover:from-[#00529e] hover:to-[#0074be] text-white font-bold text-base shadow-md shadow-blue-300/40 hover:shadow-lg transition-all duration-200 flex items-center justify-center gap-2 group active:scale-[0.99]"
                             >
                                 <i class="fas fa-paper-plane group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
-                                <span>ยืนยันการลงทะเบียน</span>
+                                <span>ยืนยันการลงทะเบียน/Confirm Registration</span>
                             </button>
                         </div>
                     </form>
@@ -504,7 +504,7 @@
                             class="flex-1 py-2.5 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all"
                         >
                             <i class="fas fa-download"></i>
-                            <span>บันทึกรูป QR Code</span>
+                            <span>บันทึกรูป QR Code/Save QR Code Image </span>
                         </a>
                         <button 
                             type="button" 
@@ -512,12 +512,12 @@
                             class="flex-1 py-2.5 px-4 rounded-xl bg-[#0062b8] hover:bg-[#00529e] text-white font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all shadow-md shadow-blue-200"
                         >
                             <i class="fas fa-pen-to-square"></i>
-                            <span>กลับไปหน้าแบบฟอร์ม</span>
+                            <span>กลับไปหน้าแบบฟอร์ม/Back to Registration Form</span>
                         </button>
                     </div>
 
                     <p class="text-xs text-slate-400 mt-4 leading-relaxed">
-                        <i class="fas fa-info-circle text-[#0062b8] mr-1"></i> แสดง QR Code นี้แก่เจ้าหน้าที่ ณ จุดลงทะเบียน หรือ บูธกิจกรรมเพื่อเช็คอินและสะสมคะแนน
+                        <i class="fas fa-info-circle text-[#0062b8] mr-1"></i> แสดง QR Code นี้แก่เจ้าหน้าที่ ณ จุดลงทะเบียน หรือ บูธกิจกรรมเพื่อเช็คอินและสะสมคะแนน/Please show this QR code to staff at the registration desk or activity booths to check in and earn points. 
                     </p>
                 </div>
             </div>
@@ -921,26 +921,26 @@
 
             <form id="editProfileForm" class="space-y-4">
                 <div>
-                    <label class="block text-xs font-semibold text-slate-700 mb-1">ชื่อ - นามสกุล <span class="text-red-500">*</span></label>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">ชื่อ - นามสกุล (สำหรับออกเกียรติบัตร)/Full Name (for Certificate) <span class="text-red-500">*</span></label>
                     <input type="text" id="editName" required class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm">
                 </div>
                 <div>
-                    <label class="block text-xs font-semibold text-slate-700 mb-1">อีเมล (E-mail) <span class="text-red-500">*</span></label>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">อีเมล (E-mail)/Email Address <span class="text-red-500">*</span></label>
                     <input type="email" id="editEmail" required class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm">
                 </div>
                 <div>
-                    <label class="block text-xs font-semibold text-slate-700 mb-1">ประเภทผู้ร่วมงาน <span class="text-red-500">*</span></label>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">ประเภทผู้ร่วมงาน/Participant Type <span class="text-red-500">*</span></label>
                     <select id="editRole" required class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm">
-                        <option value="นักเรียน">นักเรียน</option>
-                        <option value="ครู">ครู</option>
-                        <option value="ผู้ปกครอง">ผู้ปกครอง</option>
-                        <option value="บุคคลทั่วไป">บุคคลทั่วไป</option>
+                        <option value="นักเรียน">นักเรียน/Student</option>
+                        <option value="ครู">ครู/Teacher</option>
+                        <option value="ผู้ปกครอง">ผู้ปกครอง/Parent/Guardian</option>
+                        <option value="บุคคลทั่วไป">บุคคลทั่วไป/General Public</option>
                     </select>
                 </div>
                 <div>
                     <label class="block text-xs font-semibold text-slate-700 mb-1">จังหวัด <span class="text-red-500">*</span></label>
                     <select id="editProvince" required class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm">
-                        <option value="" disabled>-- เลือกจังหวัด --</option>
+                        <option value="" disabled>-- เลือกจังหวัด/Please Select a Province --</option>
                     </select>
                 </div>
                 <div id="editCustomProvinceContainer" class="hidden">
@@ -2838,8 +2838,8 @@
                                     </div>
                                 </div>
                                 <div class="p-3 bg-slate-50 border border-slate-200/70 rounded-xl text-xs space-y-1 text-slate-700">
-                                    <div><span class="font-semibold text-slate-900">ชื่อผู้รับ:</span> ${currentUser.name}</div>
-                                    <div><span class="font-semibold text-slate-900">สถานศึกษา:</span> ${currentUser.school || '-'}</div>
+                                    <div><span class="font-semibold text-slate-900">ชื่อผู้รับ/name:</span> ${currentUser.name}</div>
+                                    <div><span class="font-semibold text-slate-900">สถานศึกษา/School:</span> ${currentUser.school || '-'}</div>
                                 </div>
                             </div>
                         `,
