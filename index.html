@@ -150,8 +150,8 @@
             <div id="loadingIconContainer" class="inline-flex p-4 rounded-full bg-white shadow-xl animate-bounce">
                 <i class="fab fa-line text-5xl text-[#06c755]"></i>
             </div>
-            <h2 id="loadingTitle" class="text-xl font-bold text-slate-800">กำลังเชื่อมต่อ LINE LIFF...</h2>
-            <p id="loadingDesc" class="text-slate-500 text-sm max-w-sm mx-auto">กรุณารอสักครู่ ระบบกำลังตรวจสอบข้อมูลบัญชีของคุณ</p>
+            <h2 id="loadingTitle" class="text-xl font-bold text-slate-800">กำลังเชื่อมต่อ Connecting to LINE LIFF...</h2>
+            <p id="loadingDesc" class="text-slate-500 text-sm max-w-sm mx-auto">กรุณารอสักครู่ ระบบกำลังตรวจสอบข้อมูลบัญชีของคุณ /Please wait while we check your account.</p>
             
             <!-- Connection Retry Box (จะแสดงขึ้นเมื่อเชื่อมต่อฐานข้อมูลล่าช้า) -->
             <div id="loadingRetryBox" class="hidden pt-3 max-w-sm mx-auto">
@@ -1687,8 +1687,8 @@
 
             // 3. ถ้ายังไม่มี Cache ในเครื่อง (ผู้ใช้เข้าใช้งานครั้งแรกหรือล้างแคชเครื่อง)
             // ให้แสดงหน้า Loading และค้นหาใน Google Sheets อย่างละเอียด โดยไม่แสดงหน้า Login ก่อนเด็ดขาด
-            $('#loadingTitle').text('กำลังตรวจสอบสถานะสมาชิก...');
-            $('#loadingDesc').text('กรุณารอสักครู่ ระบบกำลังค้นหาประวัติการลงทะเบียนของคุณ');
+            $('#loadingTitle').text('กำลังตรวจสอบสถานะสมาชิก/Checking your status...');
+            $('#loadingDesc').text('กรุณารอสักครู่ ระบบกำลังค้นหาประวัติการลงทะเบียนของคุณ/Please wait while we check your registration history.');
             $('#loadingScreen').show();
 
             await queryUserFromDatabase(uid);
