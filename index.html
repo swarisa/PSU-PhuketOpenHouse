@@ -567,15 +567,15 @@
 
                 <div class="flex items-center justify-between mb-4">
                     <div>
-                        <span class="text-xs uppercase tracking-wider font-bold text-indigo-600">คะแนนสะสมของคุณ</span>
+                        <span class="text-xs uppercase tracking-wider font-bold text-indigo-600">คะแนนสะสมของคุณ/Your Points</span>
                         <div class="flex items-baseline gap-2 mt-1">
                             <span id="statTotalPoints" class="text-4xl font-extrabold text-slate-900 tracking-tight">0</span>
-                            <span class="text-slate-400 text-sm font-medium">/ <span id="passingScoreLabel">80</span> คะแนน</span>
+                            <span class="text-slate-400 text-sm font-medium">/ <span id="passingScoreLabel">80</span> คะแนน/Points</span>
                         </div>
                     </div>
                     <div id="certStatusBadge" class="px-3 py-1.5 rounded-full text-xs font-semibold flex items-center gap-1.5 bg-slate-100 text-slate-600">
                         <i class="fas fa-hourglass-half"></i>
-                        <span>สะสมคะแนน</span>
+                        <span>สะสมคะแนน/Earn Points</span>
                     </div>
                 </div>
 
@@ -586,7 +586,7 @@
 
                 <!-- Progress Message -->
                 <div class="flex justify-between items-center text-xs text-slate-500">
-                    <span id="progressMessage">เหลืออีก 80 คะแนน เพื่อรับเกียรติบัตร</span>
+                    <span id="progressMessage">เหลืออีก 80 คะแนน เพื่อรับเกียรติบัตร/Earn more points to get your certificate.</span>
                     <span id="progressPercent" class="font-bold text-indigo-600">0%</span>
                 </div>
 
@@ -1892,7 +1892,7 @@
                     .addClass('bg-slate-100 text-slate-600')
                     .html('<i class="fas fa-hourglass-half"></i><span>สะสมคะแนน</span>');
                 
-                $('#progressMessage').text(`สะสมอีก ${diff} คะแนน เพื่อรับเกียรติบัตร`);
+                $('#progressMessage').text(`สะสมอีก/Earn more ${diff} คะแนน/points เพื่อรับเกียรติบัตร/to get your certificate.`);
                 $('#certUnlockedSection').addClass('hidden');
             }
 
