@@ -1947,7 +1947,7 @@
                         </div>
                         <div class="flex-shrink-0 text-right">
                             <span class="inline-flex items-center px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-600 font-bold text-xs border border-emerald-100/90">
-                                +${item.points} <span class="text-[10px] font-medium ml-0.5">คะแนน</span>
+                                +${item.points} <span class="text-[10px] font-medium ml-0.5">คะแนน/Points</span>
                             </span>
                         </div>
                     </div>
@@ -2399,7 +2399,7 @@
 
                     const eventName = String(data.event || data.กิจกรรม || data.name || '').trim();
                     const boothCode = String(data.code || data.id || '').trim().toUpperCase();
-                    const points = parseInt(data.points || data.point || data.คะแนน || 0, 10);
+                    const points = parseInt(data.points || data.point || data.คะแนน/Points || 0, 10);
                     const today = new Date().toISOString().split('T')[0];
                     const qrDate = data.date || today;
 
