@@ -2969,11 +2969,11 @@
                 day: 'numeric' 
             });
 
-            $('#certModalId').text('เลขที่: ' + certId);
+            $('#certModalId').text('No: ' + certId);
             $('#certModalName').text(currentUser.name);
-            $('#certModalSchool').text(`${currentUser.school || '-'} จังหวัด${currentUser.province || ''}`);
-            $('#certModalEvent').text(`ได้เข้าร่วม${CERT_ASSETS.eventName} `);
-            $('#certModalDate').text('ให้ไว้ ณ วันที่ ' + todayThai);
+            $('#certModalSchool').text(`${currentUser.school || '-'} Province${currentUser.province || ''}`);
+            $('#certModalEvent').text(`for taking part in${CERT_ASSETS.eventName} `);
+            $('#certModalDate').text('Issued on ' + todayThai);
 
             $('#certificatePreviewModal').removeClass('hidden');
         }
