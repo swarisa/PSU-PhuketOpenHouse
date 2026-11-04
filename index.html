@@ -2974,7 +2974,7 @@
             $('#certModalId').text('No: ' + certId);
             $('#certModalName').text(currentUser.name);
             $('#certModalSchool').text(`${currentUser.school || '-'} Province${currentUser.province || ''}`);
-            $('#certModalEvent').text(`ได้เข้าร่วมโครงการ ${CERT_ASSETS.eventName} \n for taking part in ${CERT_ASSETS.eventName} `);
+            $('#certModalEvent').html(`ได้เข้าร่วมโครงการ ${CERT_ASSETS.eventName}<br>for taking part in ${CERT_ASSETS.eventName}`);
             $('#certModalDate').text('Issued on ' + todayThai);
 
             $('#certificatePreviewModal').removeClass('hidden');
