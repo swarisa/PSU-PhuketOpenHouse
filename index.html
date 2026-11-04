@@ -150,8 +150,8 @@
             <div id="loadingIconContainer" class="inline-flex p-4 rounded-full bg-white shadow-xl animate-bounce">
                 <i class="fab fa-line text-5xl text-[#06c755]"></i>
             </div>
-            <h2 id="loadingTitle" class="text-xl font-bold text-slate-800">กำลังเชื่อมต่อ Connecting to LINE LIFF...</h2>
-            <p id="loadingDesc" class="text-slate-500 text-sm max-w-sm mx-auto">กรุณารอสักครู่ ระบบกำลังตรวจสอบข้อมูลบัญชีของคุณ /Please wait while we check your account.</p>
+            <h2 id="loadingTitle" class="text-xl font-bold text-slate-800">กำลังเชื่อมต่อ LINE LIFF...</h2>
+            <p id="loadingDesc" class="text-slate-500 text-sm max-w-sm mx-auto">กรุณารอสักครู่ ระบบกำลังตรวจสอบข้อมูลบัญชีของคุณ</p>
             
             <!-- Connection Retry Box (จะแสดงขึ้นเมื่อเชื่อมต่อฐานข้อมูลล่าช้า) -->
             <div id="loadingRetryBox" class="hidden pt-3 max-w-sm mx-auto">
@@ -185,7 +185,7 @@
                     <p class="text-slate-500 text-xs sm:text-sm mt-0.5">กรุณากรอกข้อมูลเพื่อรับบัตรเข้าร่วมงาน/Please fill in the form to receive your event ticket.</p>
                 </div>
                 <div class="flex items-center gap-2">
-                    <button id="headerAvatarBtn" type="button" title="ดู QR Code ประจำตัว/ View Your QR Code" class="w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 text-[#0a335c] flex items-center justify-center border border-slate-200 shadow-sm transition-all active:scale-95">
+                    <button id="headerAvatarBtn" type="button" title="ดู QR Code ประจำตัว" class="w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 text-[#0a335c] flex items-center justify-center border border-slate-200 shadow-sm transition-all active:scale-95">
                         <i class="fas fa-user-plus text-sm"></i>
                     </button>
                 </div>
@@ -210,9 +210,9 @@
                     <img id="regLineAvatar" src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Avatar" class="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-cover border-2 border-white shadow-sm ring-1 ring-blue-100 flex-shrink-0">
                     <div class="min-w-0 flex-1">
                         <div class="text-[11px] font-medium text-slate-500">
-                            เข้าใช้งานผ่าน LINE/Log in with LINE
+                            เข้าใช้งานผ่าน LINE
                         </div>
-                        <h3 id="regLineName" class="font-bold text-[#004e8c] text-base leading-tight truncate mt-0.5">ผู้ใช้งาน LINE/LINE User</h3>
+                        <h3 id="regLineName" class="font-bold text-[#004e8c] text-base leading-tight truncate mt-0.5">ผู้ใช้งาน LINE</h3>
                     </div>
                 </div>
 
@@ -222,7 +222,7 @@
                         <!-- LINE UID (ดึงข้อมูลอัตโนมัติ) -->
                         <div>
                             <label for="regLineUidInput" class="block text-sm font-semibold text-slate-700 mb-1.5">
-                                LINE UID <span class="text-xs font-normal text-slate-400">(ดึงข้อมูลอัตโนมัติ/Auto-filled)</span>
+                                LINE UID <span class="text-xs font-normal text-slate-400">(ดึงข้อมูลอัตโนมัติ)</span>
                             </label>
                             <div class="relative">
                                 <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
@@ -396,7 +396,7 @@
                         <!-- ระดับชั้นปี * (สำหรับ นักเรียน เท่านั้น) -->
                         <div id="gradeLevelGroup">
                             <label for="regGradeLevel" class="block text-sm font-semibold text-slate-700 mb-1.5">
-                                ระดับชั้นปี/Grade<span class="text-red-500">*</span>
+                                ระดับชั้นปี/Grade Level <span class="text-red-500">*</span>
                             </label>
                             <div class="relative">
                                 <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
@@ -407,14 +407,14 @@
                                     name="gradeLevel" 
                                     class="w-full pl-10 pr-10 py-3 rounded-2xl border border-slate-200 bg-white text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#0072ce] focus:border-transparent transition-all shadow-sm text-sm appearance-none cursor-pointer"
                                 >
-                                    <option value="" disabled selected>-- กรุณาเลือกระดับชั้นปี/Select Grade--</option>
-                                    <option value="มัธยมศึกษาตอนต้น">มัธยมศึกษาตอนต้น/Lower Secondary</option>
+                                    <option value="" disabled selected>-- กรุณาเลือกระดับชั้นปี/Please Select Your Grade Level --</option>
+                                    <option value="มัธยมศึกษาตอนต้น">มัธยมศึกษาตอนต้น/Lower Secondary School</option>
                                     <option value="มัธยมศึกษาปีที่ 4">มัธยมศึกษาปีที่ 4/Grade 10 (M.4)</option>
                                     <option value="มัธยมศึกษาปีที่ 5">มัธยมศึกษาปีที่ 5/Grade 11 (M.5)</option>
                                     <option value="มัธยมศึกษาปีที่ 6">มัธยมศึกษาปีที่ 6/Grade 12 (M.6)</option>
-                                    <option value="ปวช. 1">ปวช. 1/Vocational Year 1</option>
-                                    <option value="ปวช. 2">ปวช. 2/Vocational Year 2</option>
-                                    <option value="ปวช. 3">ปวช. 3/Vocational Year 3</option>
+                                    <option value="ปวช. 1">ปวช. 1/Vocational Certificate Year 1</option>
+                                    <option value="ปวช. 2">ปวช. 2/Vocational Certificate Year 2</option>
+                                    <option value="ปวช. 3">ปวช. 3/Vocational Certificate Year 3</option>
                                 </select>
                                 <span class="absolute inset-y-0 right-0 pr-3.5 flex items-center pointer-events-none text-slate-400">
                                     <i class="fas fa-chevron-down text-xs"></i>
@@ -430,7 +430,7 @@
                                 class="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-[#0062b8] to-[#0084d6] hover:from-[#00529e] hover:to-[#0074be] text-white font-bold text-base shadow-md shadow-blue-300/40 hover:shadow-lg transition-all duration-200 flex items-center justify-center gap-2 group active:scale-[0.99]"
                             >
                                 <i class="fas fa-paper-plane group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
-                                <span>ยืนยันการลงทะเบียน/Confirm</span>
+                                <span>ยืนยันการลงทะเบียน/Confirm Registration</span>
                             </button>
                         </div>
                     </form>
@@ -504,7 +504,7 @@
                             class="flex-1 py-2.5 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all"
                         >
                             <i class="fas fa-download"></i>
-                            <span>บันทึกรูป QR Code/Save QR Code</span>
+                            <span>บันทึกรูป QR Code/Save QR Code Image </span>
                         </a>
                         <button 
                             type="button" 
@@ -512,12 +512,12 @@
                             class="flex-1 py-2.5 px-4 rounded-xl bg-[#0062b8] hover:bg-[#00529e] text-white font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all shadow-md shadow-blue-200"
                         >
                             <i class="fas fa-pen-to-square"></i>
-                            <span>กลับไปหน้าแบบฟอร์ม/Back to Form</span>
+                            <span>กลับไปหน้าแบบฟอร์ม/Back to Registration Form</span>
                         </button>
                     </div>
 
                     <p class="text-xs text-slate-400 mt-4 leading-relaxed">
-                        <i class="fas fa-info-circle text-[#0062b8] mr-1"></i> แสดง QR Code นี้แก่เจ้าหน้าที่ ณ จุดลงทะเบียน หรือ บูธกิจกรรมเพื่อเช็คอินและสะสมคะแนน/Show this QR Code at the registration desk or activity booths to check in and earn points. 
+                        <i class="fas fa-info-circle text-[#0062b8] mr-1"></i> แสดง QR Code นี้แก่เจ้าหน้าที่ ณ จุดลงทะเบียน หรือ บูธกิจกรรมเพื่อเช็คอินและสะสมคะแนน/Please show this QR code to staff at the registration desk or activity booths to check in and earn points. 
                     </p>
                 </div>
             </div>
@@ -567,15 +567,15 @@
 
                 <div class="flex items-center justify-between mb-4">
                     <div>
-                        <span class="text-xs uppercase tracking-wider font-bold text-indigo-600">คะแนนสะสมของคุณ/Your Points</span>
+                        <span class="text-xs uppercase tracking-wider font-bold text-indigo-600">คะแนนสะสมของคุณ</span>
                         <div class="flex items-baseline gap-2 mt-1">
                             <span id="statTotalPoints" class="text-4xl font-extrabold text-slate-900 tracking-tight">0</span>
-                            <span class="text-slate-400 text-sm font-medium">/ <span id="passingScoreLabel">80</span> คะแนน/Points</span>
+                            <span class="text-slate-400 text-sm font-medium">/ <span id="passingScoreLabel">80</span> คะแนน</span>
                         </div>
                     </div>
                     <div id="certStatusBadge" class="px-3 py-1.5 rounded-full text-xs font-semibold flex items-center gap-1.5 bg-slate-100 text-slate-600">
                         <i class="fas fa-hourglass-half"></i>
-                        <span>สะสมคะแนน/Earn Points</span>
+                        <span>สะสมคะแนน</span>
                     </div>
                 </div>
 
@@ -586,7 +586,7 @@
 
                 <!-- Progress Message -->
                 <div class="flex justify-between items-center text-xs text-slate-500">
-                    <span id="progressMessage">เหลืออีก 80 คะแนน เพื่อรับเกียรติบัตร/Earn more points to get your certificate.</span>
+                    <span id="progressMessage">เหลืออีก 80 คะแนน เพื่อรับเกียรติบัตร</span>
                     <span id="progressPercent" class="font-bold text-indigo-600">0%</span>
                 </div>
 
@@ -597,7 +597,7 @@
                             <i class="fas fa-calendar-day"></i>
                         </div>
                         <div>
-                            <div class="text-xs text-slate-500">คะแนนวันนี้/Today's Points</div>
+                            <div class="text-xs text-slate-500">คะแนนวันนี้</div>
                             <div id="statTodayPoints" class="text-lg font-bold text-slate-800">0</div>
                         </div>
                     </div>
@@ -607,7 +607,7 @@
                             <i class="fas fa-bullseye"></i>
                         </div>
                         <div>
-                            <div class="text-xs text-slate-500">บูธที่สแกนแล้ว/Booths Visited</div>
+                            <div class="text-xs text-slate-500">บูธที่สแกนแล้ว</div>
                             <div id="statTotalScans" class="text-lg font-bold text-slate-800">0 บูธ</div>
                         </div>
                     </div>
@@ -626,9 +626,9 @@
                         <div class="inline-flex p-3 rounded-2xl bg-white/20 backdrop-blur-md shadow-inner text-yellow-100">
                             <i class="fas fa-medal text-3xl"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-white tracking-tight">🎉 ยินดีด้วย! คุณผ่านเกณฑ์แล้ว/Congratulations! You've made it</h3>
+                        <h3 class="text-xl font-bold text-white tracking-tight">🎉 ยินดีด้วย! คุณผ่านเกณฑ์แล้ว</h3>
                         <p class="text-white/90 text-sm max-w-sm mx-auto">
-                            คุณสะสมคะแนนครบตามเกณฑ์ สามารถดาวน์โหลดเกียรติบัตรฉบับอิเล็กทรอนิกส์ (PDF) ได้ทันที/You've earned enough points! You can now download your certificate (PDF).
+                            คุณสะสมคะแนนครบตามเกณฑ์ สามารถดาวน์โหลดเกียรติบัตรฉบับอิเล็กทรอนิกส์ (PDF) ได้ทันที
                         </p>
 
                         <div class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-2.5">
@@ -740,10 +740,10 @@
                         <div class="w-8 h-8 rounded-lg bg-indigo-100 text-indigo-600 flex items-center justify-center">
                             <i class="fas fa-clock-rotate-left"></i>
                         </div>
-                        <h3 class="text-lg font-bold text-slate-800">ประวัติการเข้าร่วมกิจกรรม/Activity History</h3>
+                        <h3 class="text-lg font-bold text-slate-800">ประวัติการเข้าร่วมกิจกรรม</h3>
                     </div>
                     <span id="scanCountBadge" class="text-xs font-semibold px-2.5 py-0.5 bg-slate-100 text-slate-600 rounded-full">
-                        0 รายการ/Activitys
+                        0 รายการ
                     </span>
                 </div>
 
@@ -934,7 +934,7 @@
                         <option value="นักเรียน">นักเรียน/Student</option>
                         <option value="ครู">ครู/Teacher</option>
                         <option value="ผู้ปกครอง">ผู้ปกครอง/Parent/Guardian</option>
-                        <option value="บุคคลทั่วไป">บุคคลทั่วไป/General Visitor</option>
+                        <option value="บุคคลทั่วไป">บุคคลทั่วไป/General Public</option>
                     </select>
                 </div>
                 <div>
@@ -990,7 +990,7 @@
             <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 text-[#0062b8] text-xs font-bold uppercase tracking-wider mb-2">
                 <i class="fas fa-certificate text-amber-500"></i> Open House Pass 2026
             </span>
-            <h3 class="text-lg font-bold text-slate-800">บัตรประจำตัวผู้เข้าร่วมงาน/Event Ticket</h3>
+            <h3 class="text-lg font-bold text-slate-800">บัตรประจำตัวผู้เข้าร่วมงาน</h3>
             <p class="text-xs text-slate-500 mb-4">Prince of Songkla University, Phuket</p>
 
             <div class="mb-4">
@@ -1017,7 +1017,7 @@
             </div>
 
             <button type="button" id="dismissBadgeModalBtn" class="w-full py-2.5 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs">
-                ปิดหน้าต่าง/Close
+                ปิดหน้าต่าง
             </button>
         </div>
     </div>
@@ -1687,8 +1687,8 @@
 
             // 3. ถ้ายังไม่มี Cache ในเครื่อง (ผู้ใช้เข้าใช้งานครั้งแรกหรือล้างแคชเครื่อง)
             // ให้แสดงหน้า Loading และค้นหาใน Google Sheets อย่างละเอียด โดยไม่แสดงหน้า Login ก่อนเด็ดขาด
-            $('#loadingTitle').text('กำลังตรวจสอบสถานะสมาชิก/Checking your status...');
-            $('#loadingDesc').text('กรุณารอสักครู่ ระบบกำลังค้นหาประวัติการลงทะเบียนของคุณ/Please wait while we check your registration history.');
+            $('#loadingTitle').text('กำลังตรวจสอบสถานะสมาชิก...');
+            $('#loadingDesc').text('กรุณารอสักครู่ ระบบกำลังค้นหาประวัติการลงทะเบียนของคุณ');
             $('#loadingScreen').show();
 
             await queryUserFromDatabase(uid);
@@ -1892,7 +1892,7 @@
                     .addClass('bg-slate-100 text-slate-600')
                     .html('<i class="fas fa-hourglass-half"></i><span>สะสมคะแนน</span>');
                 
-                $('#progressMessage').text(`สะสมอีก/Earn more ${diff} คะแนน/points เพื่อรับเกียรติบัตร/to get your certificate.`);
+                $('#progressMessage').text(`สะสมอีก ${diff} คะแนน เพื่อรับเกียรติบัตร`);
                 $('#certUnlockedSection').addClass('hidden');
             }
 
