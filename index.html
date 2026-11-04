@@ -2209,7 +2209,7 @@
                 pictureUrl: currentUser.pictureUrl || ''
             };
 
-            $('body').LoadingOverlay('show', { text: 'กำลังอัปเดตข้อมูล...' });
+            $('body').LoadingOverlay('show', { text: 'กำลังอัปเดตข้อมูล Updating...' });
             try {
                 const response = await fetch(API_URL, {
                     method: 'POST',
@@ -2223,7 +2223,7 @@
                     localStorage.setItem('openhouse_user_' + currentUser.uid, JSON.stringify(currentUser));
                     $('#editProfileModal').addClass('hidden');
                     showAppScreen();
-                    Swal.fire({ icon: 'success', title: 'แก้ไขข้อมูลสำเร็จ', timer: 1500, showConfirmButton: false });
+                    Swal.fire({ icon: 'success', title: 'แก้ไขข้อมูลสำเร็จ Edited', timer: 1500, showConfirmButton: false });
                 }
             } catch (err) {
                 $('body').LoadingOverlay('hide');
