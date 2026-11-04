@@ -1748,8 +1748,8 @@
                 // ผูกปุ่มลองใหม่
                 $('#retryCheckUidBtn').off('click').on('click', function() {
                     $('#loadingRetryBox').addClass('hidden');
-                    $('#loadingTitle').text('กำลังตรวจสอบสถานะสมาชิก...');
-                    $('#loadingDesc').text('กรุณารอสักครู่ ระบบกำลังค้นหาประวัติการลงทะเบียนของคุณ');
+                    $('#loadingTitle').text('กำลังตรวจสอบสถานะสมาชิก.../Checking your status...');
+                    $('#loadingDesc').text('กรุณารอสักครู่ ระบบกำลังค้นหาประวัติการลงทะเบียนของคุณ/Please wait while we check your registration history.');
                     queryUserFromDatabase(uid);
                 });
 
