@@ -1042,12 +1042,12 @@
 
         // รูปภาพประกอบสำหรับทำเกียรติบัตร (สามารถแทนที่ด้วยลิงก์ของคุณได้)
         const CERT_ASSETS = {
-            logo: 'https://lh3.googleusercontent.com/d/1bnQB8dqbZhX2cYhqcMh5O0hDAmTtL2qg',
-            certificateBackground: 'https://lh3.googleusercontent.com/d/17BPo2EgtnLQR6zamj9Ubd7HnKK6U8y7Y',
+            logo: 'https://lh3.googleusercontent.com/d/1twlFf-4SwwNwAXJQQH1Rb9zSY7PSIosL',
+            certificateBackground: 'https://lh3.googleusercontent.com/d/1R7gJeyu0c2uNpJbSNU3U_VUE1Ums-5AM',
             signature: 'https://lh3.googleusercontent.com/d/1RjgYPXWsy4V4_kzXQp4CoRwrcSCfg-T3',
-            directorName: '(Assoc. Prof. Pun Thongchumnum, Ph.D.)',
-            directorPosition: '(Vice President for Phuket Campus)',
-            orgName: 'Prince of Songkla University, Phuket Campus',
+            directorName: '(รองศาสตราจารย์ ดร.พันธ์ ทองชุมนุม)',
+            directorPosition: '(รองอธิการบดีวิทยาเขตภูเก็ต)',
+            orgName: 'มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตภูเก็ต',
             eventName: 'โครงการ PSU Phuket Open House 2026'
         };
 
@@ -1947,7 +1947,7 @@
                         </div>
                         <div class="flex-shrink-0 text-right">
                             <span class="inline-flex items-center px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-600 font-bold text-xs border border-emerald-100/90">
-                                +${item.points} <span class="text-[10px] font-medium ml-0.5">คะแนน/Points</span>
+                                +${item.points} <span class="text-[10px] font-medium ml-0.5">คะแนน</span>
                             </span>
                         </div>
                     </div>
@@ -2399,7 +2399,7 @@
 
                     const eventName = String(data.event || data.กิจกรรม || data.name || '').trim();
                     const boothCode = String(data.code || data.id || '').trim().toUpperCase();
-                    const points = parseInt(data.points || data.point || data.คะแนน/Points || 0, 10);
+                    const points = parseInt(data.points || data.point || data.คะแนน || 0, 10);
                     const today = new Date().toISOString().split('T')[0];
                     const qrDate = data.date || today;
 
