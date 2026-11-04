@@ -1891,8 +1891,10 @@
                     .removeClass('bg-amber-100 text-amber-700')
                     .addClass('bg-slate-100 text-slate-600')
                     .html('<i class="fas fa-hourglass-half"></i><span>สะสมคะแนน<br>Earn Points</span>');
-                
-                $('#progressMessage').text(`สะสมอีก/Earn more ${diff} คะแนน/points เพื่อรับเกียรติบัตร/to get your certificate.`);
+               
+                //$('#progressMessage').text(`สะสมอีก/Earn more ${diff} คะแนน/points เพื่อรับเกียรติบัตร/to get your certificate.`);
+                $('#progressMessage').text(`สะสมอีก ${diff} คะแนน เพื่อรับเกียรติบัตร`);
+                $('#progressMessage').text(`Earn more ${diff} points to get your certificate.`);
                 $('#certUnlockedSection').addClass('hidden');
             }
 
