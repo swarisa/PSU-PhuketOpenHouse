@@ -2110,7 +2110,7 @@
         // รีเฟรชข้อมูลผู้ใช้
         $('#refreshDataBtn').on('click', async function() {
             if (!currentUser) return;
-            $('body').LoadingOverlay('show', { text: 'กำลังอัปเดตข้อมูล...' });
+            $('body').LoadingOverlay('show', { text: 'กำลังอัปเดตข้อมูล Updating...' });
             try {
                 const res = await fetch(`${API_URL}?uid=${encodeURIComponent(currentUser.uid)}&action=getUserData`);
                 const data = await res.json();
@@ -2126,7 +2126,7 @@
                         updateBoothCatalog(data.booths);
                     }
                     updateDashboardUI();
-                    Swal.fire({ icon: 'success', title: 'อัปเดตข้อมูลเรียบร้อย', timer: 1200, showConfirmButton: false });
+                    Swal.fire({ icon: 'success', title: 'อัปเดตข้อมูลเรียบร้อย updated successfully', timer: 1200, showConfirmButton: false });
                 }
             } catch (e) {
                 $('body').LoadingOverlay('hide');
