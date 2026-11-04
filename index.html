@@ -2976,8 +2976,7 @@
             $('#certModalSchool').text(`${currentUser.school || '-'} Province${currentUser.province || ''}`);
             $('#certModalEvent').text(`ได้เข้าร่วมโครงการ ${CERT_ASSETS.eventName}`);
             $('#certModalEvent').text(`for taking part in ${CERT_ASSETS.eventName} `);
-             $('#certModalDate').text('Issued on ' + today);
-           // $('#certModalDate').text('Issued on ' + todayThai);
+            $('#certModalDate').text('Issued on ' + todayThai);
 
             $('#certificatePreviewModal').removeClass('hidden');
         }
@@ -2987,7 +2986,7 @@
          */
         async function handleDirectCertificateDownload(uid) {
             $('#certDirectScreen').removeClass('hidden');
-            $('body').LoadingOverlay('show', { text: 'กำลังดึงข้อมูลและเตรียมเกียรติบัตร...' });
+            $('body').LoadingOverlay('show', { text: 'กำลังดึงข้อมูลและเตรียมเกียรติบัตร ...Getting your certificate ready ...' });
 
             try {
                 let targetUser = null;
