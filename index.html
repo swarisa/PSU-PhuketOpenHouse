@@ -1048,7 +1048,7 @@
             directorName: '(Assoc. Prof. Pun Thongchumnum, Ph.D.)',
             directorPosition: '(Vice President for Phuket Campus)',
             orgName: 'Prince of Songkla University, Phuket Campus',
-            eventName: 'โครงการ PSU Phuket Open House 2026'
+            eventName: 'PSU Phuket Open House 2026'
         };
 
         // สถานะของแอปพลิเคชัน
@@ -2972,7 +2972,8 @@
             $('#certModalId').text('No: ' + certId);
             $('#certModalName').text(currentUser.name);
             $('#certModalSchool').text(`${currentUser.school || '-'} Province${currentUser.province || ''}`);
-            $('#certModalEvent').text(`AA for taking part in${CERT_ASSETS.eventName} `);
+            $('#certModalEvent').text(`ได้เข้าร่วมโครงการ ${CERT_ASSETS.eventName} `);
+            $('#certModalEvent').text(`for taking part in${CERT_ASSETS.eventName} `);
             $('#certModalDate').text('Issued on ' + todayThai);
 
             $('#certificatePreviewModal').removeClass('hidden');
