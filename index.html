@@ -2861,7 +2861,7 @@
                 }
 
                 // กรณีเปิดจาก Browser ปกติ (Safari / Chrome / คอมพิวเตอร์)
-                $('body').LoadingOverlay('show', { text: 'กำลังสร้างเกียรติบัตร PDF...' });
+                $('body').LoadingOverlay('show', { text: 'กำลังสร้างเกียรติบัตร PDF.../Creating your certificate...' });
 
                 const totalPts = userScans.reduce((sum, item) => sum + (parseInt(item.points) || 0), 0);
                 const certId = 'OH-' + (currentUser.uid.length > 6 ? currentUser.uid.slice(-6).toUpperCase() : currentUser.uid) + '-2569';
