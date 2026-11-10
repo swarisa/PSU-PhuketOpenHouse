@@ -306,6 +306,10 @@
                                     <i class="fas fa-graduation-cap text-2xl mb-1.5"></i>
                                     <span class="text-xs sm:text-sm font-semibold" data-i18n="roleStudent">นักเรียน</span>
                                 </button>
+                             <button type="button" class="role-btn flex flex-col items-center justify-center p-3 rounded-2xl border-2 border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:text-slate-800 transition-all duration-200 shadow-sm" data-role="ครู">
+                                    <i class="fas fa-person-military-rifle text-2xl mb-1.5"></i>
+                                    <span class="text-xs sm:text-sm font-semibold" data-i18n="roleNosoTor">นศท</span>
+                                </button>
                                 <button type="button" class="role-btn flex flex-col items-center justify-center p-3 rounded-2xl border-2 border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:text-slate-800 transition-all duration-200 shadow-sm" data-role="ครู">
                                     <i class="fas fa-chalkboard-user text-2xl mb-1.5"></i>
                                     <span class="text-xs sm:text-sm font-semibold" data-i18n="roleTeacher">ครู</span>
@@ -362,7 +366,7 @@
                             </div>
                         </div>
 
-                        <!-- ชื่อโรงเรียน / วิทยาลัย * (สำหรับ นักเรียน และ ครู) -->
+                        <!-- ชื่อโรงเรียน / วิทยาลัย * (สำหรับ นักเรียน นศท และ ครู) -->
                         <div id="schoolGroup">
                             <label for="regSchool" class="block text-sm font-semibold text-slate-700 mb-1.5">
                                 <span data-i18n="schoolLabel">ชื่อโรงเรียน / วิทยาลัย</span> <span class="text-red-500">*</span>
@@ -1090,6 +1094,7 @@
                     <select id="editRole" required class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm">
                         <option value="นักเรียน" data-i18n="roleStudent">นักเรียน</option>
                         <option value="ครู" data-i18n="roleTeacher">ครู</option>
+                        <option value="ครู" data-i18n="roleNosotor">ครู</option>
                         <option value="ผู้ปกครอง" data-i18n="roleParent">ผู้ปกครอง</option>
                         <option value="บุคคลทั่วไป" data-i18n="roleGeneral">บุคคลทั่วไป</option>
                     </select>
@@ -1248,6 +1253,7 @@
                 emailErrorText: 'กรุณากรอกรูปแบบอีเมลให้ถูกต้อง เช่น example@gmail.com',
                 participantTypeLabel: 'ประเภทผู้ร่วมงาน',
                 roleStudent: 'นักเรียน',
+                roleNosotor: 'นศท.',
                 roleTeacher: 'ครู',
                 roleParent: 'ผู้ปกครอง',
                 roleGeneral: 'บุคคลทั่วไป',
@@ -1532,6 +1538,7 @@
                 'บุคคลทั่วไป': 'บุคคลทั่วไป',
                 'ผู้เข้าร่วม': 'ผู้เข้าร่วม',
                 'Student': 'นักเรียน',
+                'Nosotor': 'นศท.',
                 'Teacher': 'ครู',
                 'Parent/Guardian': 'ผู้ปกครอง',
                 'General Visitor': 'บุคคลทั่วไป',
