@@ -1838,7 +1838,7 @@
                     $('#regCustomProvince').prop('required', true).focus();
 
                     // กรณีจังหวัดอื่นๆ ถ้าเป็นนักเรียนหรือครู ให้เปิดช่องพิมพ์โรงเรียนเองทันที
-                    if (currentRole === 'นักเรียน' || currentRole === 'ครู') {
+                    if (currentRole === 'นักเรียน' || currentRole === 'นศท.' || currentRole === 'ครู') {
                         $('#schoolGroup').addClass('hidden');
                         $('#customSchoolContainer').removeClass('hidden');
                         $('#regCustomSchool').prop('required', true);
@@ -1847,7 +1847,7 @@
                     $('#customProvinceContainer').addClass('hidden');
                     $('#regCustomProvince').prop('required', false).val('');
 
-                    if (currentRole === 'นักเรียน' || currentRole === 'ครู') {
+                    if (currentRole === 'นักเรียน' || currentRole === 'นศท.' || currentRole === 'ครู') {
                         $('#schoolGroup').removeClass('hidden');
                         populateSchoolDropdown($('#regSchool'), $('#customSchoolContainer'), prov);
                     }
@@ -1876,7 +1876,7 @@
                     $('#editCustomProvinceContainer').removeClass('hidden');
                     $('#editCustomProvince').prop('required', true);
 
-                    if (currentRole === 'นักเรียน' || currentRole === 'ครู') {
+                    if (currentRole === 'นักเรียน' || currentRole === 'นศท.' || currentRole === 'ครู') {
                         $('#editSchoolGroup').addClass('hidden');
                         $('#editCustomSchoolContainer').removeClass('hidden');
                         $('#editCustomSchool').prop('required', true);
@@ -1885,7 +1885,7 @@
                     $('#editCustomProvinceContainer').addClass('hidden');
                     $('#editCustomProvince').prop('required', false);
 
-                    if (currentRole === 'นักเรียน' || currentRole === 'ครู') {
+                    if (currentRole === 'นักเรียน' || currentRole === 'นศท.' || currentRole === 'ครู') {
                         $('#editSchoolGroup').removeClass('hidden');
                         populateSchoolDropdown($('#editSchool'), $('#editCustomSchoolContainer'), prov);
                     }
@@ -1982,7 +1982,7 @@
         }
 
         /**
-         * กำหนดการทำงานของปุ่มเลือกประเภทผู้ร่วมงาน (นักเรียน, ครู, ผู้ปกครอง, บุคคลทั่วไป)
+         * กำหนดการทำงานของปุ่มเลือกประเภทผู้ร่วมงาน (นักเรียน, นศท., ครู, ผู้ปกครอง, บุคคลทั่วไป)
          */
         function initRoleButtons() {
             $('.role-btn').on('click', function() {
@@ -1994,6 +1994,7 @@
         /**
          * อัปเดตการแสดงผลของฟิลด์ข้อมูลตามเงื่อนไขประเภทผู้ร่วมงาน
          * - นักเรียน: จังหวัด + โรงเรียน (filter ตามจังหวัด) + ระดับชั้นปี
+         * - นศท.: จังหวัด + โรงเรียน (filter ตามจังหวัด) + ระดับชั้นปี
          * - ครู: จังหวัด + โรงเรียน (filter ตามจังหวัด)
          * - ผู้ปกครอง: จังหวัด เท่านั้น
          * - บุคคลทั่วไป: จังหวัด เท่านั้น
@@ -2029,7 +2030,27 @@
                 $('#gradeLevelGroup').removeClass('hidden');
                 $('#regGradeLevel').prop('required', true);
 
-            } else if (role === 'ครู') {
+            }  else if (role === 'นศท.') {
+                // นศท.: แสดงจังหวัด, โรงเรียน, ระดับชั้นปี
+                $('#provinceGroup').removeClass('hidden');
+                $('#regProvince').prop('required', true);
+
+                if (prov === '__OTHER__') {
+                    $('#schoolGroup').addClass('hidden');
+                    $('#customSchoolContainer').removeClass('hidden');
+                    $('#regCustomSchool').prop('required', true);
+                } else {
+                    $('#schoolGroup').removeClass('hidden');
+                    if (prov) {
+                        $('#regSchool').prop('required', true);
+                        populateSchoolDropdown($('#regSchool'), $('#customSchoolContainer'), prov, $('#regSchool').val());
+                    }
+                }
+
+                $('#gradeLevelGroup').removeClass('hidden');
+                $('#regGradeLevel').prop('required', true);
+                
+             }  else if (role === 'ครู') {
                 // ครู: แสดงแค่จังหวัดกับโรงเรียน
                 $('#provinceGroup').removeClass('hidden');
                 $('#regProvince').prop('required', true);
@@ -2079,6 +2100,14 @@
                     $('#editSchoolGroup').removeClass('hidden');
                 }
                 $('#editGradeLevelGroup').removeClass('hidden');
+            } else if (role === 'นศท.') {
+                if (prov === '__OTHER__') {
+                    $('#editSchoolGroup').addClass('hidden');
+                    $('#editCustomSchoolContainer').removeClass('hidden');
+                } else {
+                    $('#editSchoolGroup').removeClass('hidden');
+                }
+                $('#editGradeLevelGroup').removeClass('hidden');     
             } else if (role === 'ครู') {
                 if (prov === '__OTHER__') {
                     $('#editSchoolGroup').addClass('hidden');
@@ -2166,13 +2195,14 @@
 
             // สัญลักษณ์ไอคอนตามบทบาท
             let roleIconHtml = '<i class="fas fa-graduation-cap"></i>';
-            if (role === 'ครู') roleIconHtml = '<i class="fas fa-chalkboard-user"></i>';
+            if (role === 'นศท.') roleIconHtml = '<i class="fas fa-chalkboard-user"></i>';
+            else if (role === 'ครู') roleIconHtml = '<i class="fas fa-chalkboard-user"></i>';
             else if (role === 'ผู้ปกครอง') roleIconHtml = '<i class="fas fa-users"></i>';
             else if (role === 'บุคคลทั่วไป') roleIconHtml = '<i class="fas fa-user"></i>';
             $('#badgeRoleIcon').html(roleIconHtml);
 
             // ข้อมูลสถานศึกษาหรือจังหวัด
-            if (role === 'นักเรียน' || role === 'ครู') {
+            if (role === 'นักเรียน' || role === 'นศท.' || role === 'ครู') {
                 const schoolDisplay = school ? translateSchool(school) : (province ? formatProvinceDisplay(province) : t('schoolFallbackLabel'));
                 $('#badgeSchoolPill').text(schoolDisplay).removeClass('hidden');
             } else {
