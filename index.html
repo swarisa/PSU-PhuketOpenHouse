@@ -1100,13 +1100,13 @@
 
                     <!-- Footer & Signature -->
                     <div class="flex items-end justify-between w-full pt-1">
-                        <div class="text-left text-[8px] sm:text-[10px] text-slate-500" id="certModalDate">
+                        <div class="text-left text-[6px] sm:text-[10px] text-slate-500" id="certModalDate">
                             ให้ไว้ ณ วันที่ ...<br>Issued on
                         </div>
                         <div class="flex flex-col items-center">
                             <img src="https://lh3.googleusercontent.com/d/1RjgYPXWsy4V4_kzXQp4CoRwrcSCfg-T3" alt="Signature" class="h-5 sm:h-8 object-contain mb-0.5">
-                            <div class="text-[9px] sm:text-xs font-bold text-slate-800 leading-tight">(Assoc. Prof. Pun Thongchumnum, Ph.D.)</div>
-                            <div class="text-[7px] sm:text-[9px] text-slate-500 leading-tight">(Vice President for Phuket Campus)</div>
+                            <div class="text-[8px] sm:text-xs font-bold text-slate-800 leading-tight">(Assoc. Prof. Pun Thongchumnum, Ph.D.)</div>
+                            <div class="text-[6px] sm:text-[9px] text-slate-500 leading-tight">(Vice President for Phuket Campus)</div>
                         </div>
                     </div>
                 </div>
@@ -3883,7 +3883,8 @@
                     ? `Has participated in PSU Phuket Open House 2026`
                       : `ได้เข้าร่วม${CERT_ASSETS.eventName}`
             );
-            $('#certModalDate').text((currentLang === 'en' ? 'Given on ' : 'ให้ไว้ ณ วันที่ ') + todayFormatted);
+           // $('#certModalDate').text((currentLang === 'en' ? 'Given on ' : 'ให้ไว้ ณ วันที่ ') + todayFormatted);
+            $('#certModalDate').text((currentLang === 'en' ? 'Given on 20 November 2026 ' : 'ให้ไว้ ณ วันที่ 20 พฤศจิกายน 2569') );
 
             $('#certificatePreviewModal').removeClass('hidden');
         }
