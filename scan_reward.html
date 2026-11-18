@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>สแกนรับของรางวัล</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#f5f6f8;--card:#fff;--ink:#1c2330;--muted:#6b7385;--brand:#1f5eff;--ok:#12805c;--okbg:#e3f5ee;--err:#b42318;--errbg:#fdeceb;--warn:#8a5a00;--warnbg:#fff4d6}
+  @media (prefers-color-scheme:dark){:root{--bg:#10141c;--card:#1a212d;--ink:#eef1f6;--muted:#97a0b2;--brand:#5b8cff;--ok:#5fd4a6;--okbg:#12302a;--err:#ff8b80;--errbg:#3a1a18;--warn:#f2c35b;--warnbg:#38300f}}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:'Noto Sans Thai',system-ui,sans-serif;padding:16px;padding-bottom:max(16px,env(safe-area-inset-bottom))}
+  main{max-width:480px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+  h1{font-size:1.25rem;margin:4px 0 0}
+  .video-wrap{position:relative;aspect-ratio:1/1;background:#000;border-radius:16px;overflow:hidden}
+  video{width:100%;height:100%;object-fit:cover;display:none}
+  .video-wrap.on video{display:block}
+  .placeholder{position:absolute;inset:0;display:grid;place-items:center;color:#9aa3b5;font-size:.95rem;text-align:center;padding:24px}
+  .video-wrap.on .placeholder{display:none}
+  .frame{display:none;position:absolute;inset:18%;border:3px solid #fff;border-radius:14px;box-shadow:0 0 0 999px rgba(0,0,0,.35);pointer-events:none}
+  .video-wrap.on .frame{display:block}
+  .row{display:flex;gap:10px}
+  button{flex:1;font:inherit;font-weight:600;font-size:1rem;padding:15px 10px;border:0;border-radius:12px;cursor:pointer}
+  button:focus-visible{outline:3px solid var(--brand);outline-offset:2px}
+  #startBtn{background:var(--brand);color:#fff}
+  #stopBtn{background:var(--card);color:var(--ink);border:1.5px solid var(--muted)}
+  button:disabled{opacity:.45;cursor:not-allowed}
+  #result{padding:16px;border-radius:12px;background:var(--card);color:var(--muted);min-height:76px;line-height:1.5}
+  #result strong{display:block;font-size:1.1rem;margin-bottom:2px}
+  #result.ok{background:var(--okbg);color:var(--ok)}
+  #result.err{background:var(--errbg);color:var(--err)}
+  #result.warn{background:var(--warnbg);color:var(--warn)}
+  #result small{display:block;opacity:.85;word-break:break-all}
+  canvas{display:none}
+</style>
+</head>
+<body>
+<main>
+  <h1>สแกน QR Code รับของรางวัล</h1>
+
+  <div class="video-wrap" id="videoWrap">
+    <video id="video" playsinline muted></video>
+    <div class="frame"></div>
+    <div class="placeholder">กดปุ่ม “เปิดกล้องเพื่อสแกน” เพื่อเริ่มต้น</div>
+  </div>
+  <canvas id="canvas"></canvas>
+
+  <div class="row">
+    <button id="startBtn">เปิดกล้องเพื่อสแกน</button>
+    <button id="stopBtn" disabled>ปิดกล้อง</button>
+  </div>
+
+  <div id="result" role="status" aria-live="polite">ผลการสแกนจะแสดงที่นี่</div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js"></script>
+<script>
+const video = document.getElementById('video');
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d', { willReadFrequently: true });
+const wrap = document.getElementById('videoWrap');
+const startBtn = document.getElementById('startBtn');
+const stopBtn = document.getElementById('stopBtn');
+const resultEl = document.getElementById('result');
+
+let stream = null, rafId = null, busy = false, lastCode = '', lastTime = 0;
+
+function show(type, title, detail) {
+  resultEl.className = type;
+  resultEl.innerHTML = '';
+  const s = document.createElement('strong'); s.textContent = title; resultEl.appendChild(s);
+  if (detail) { const d = document.createElement('small'); d.textContent = detail; resultEl.appendChild(d); }
+}
+
+async function startCamera() {
+  try {
+    stream = await navigator.mediaDevices.getUserMedia({
+      video: { facingMode: { ideal: 'environment' }, width: { ideal: 1280 }, height: { ideal: 720 } },
+      audio: false
+    });
+    video.srcObject = stream;
+    await video.play();
+    wrap.classList.add('on');
+    startBtn.disabled = true; stopBtn.disabled = false;
+    show('', 'กำลังสแกน…', 'นำ QR Code มาไว้ในกรอบ');
+    rafId = requestAnimationFrame(tick);
+  } catch (e) {
+    show('err', 'เปิดกล้องไม่ได้', 'กรุณาอนุญาตการใช้กล้องในเบราว์เซอร์ แล้วลองใหม่');
+  }
+}
+
+function stopCamera() {
+  if (rafId) cancelAnimationFrame(rafId);
+  if (stream) stream.getTracks().forEach(t => t.stop());
+  stream = null; rafId = null; video.srcObject = null;
+  wrap.classList.remove('on');
+  startBtn.disabled = false; stopBtn.disabled = true;
+}
+
+function tick() {
+  if (!stream) return;
+  if (video.readyState === video.HAVE_ENOUGH_DATA && !busy) {
+    canvas.width = video.videoWidth; canvas.height = video.videoHeight;
+    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+    const img = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    const code = jsQR(img.data, img.width, img.height, { inversionAttempts: 'dontInvert' });
+    if (code && code.data) {
+      const val = code.data.trim();
+      const now = Date.now();
+      if (val && !(val === lastCode && now - lastTime < 4000)) {   // กันสแกนซ้ำรัว ๆ
+        lastCode = val; lastTime = now;
+        handleScan(val);
+      }
+    }
+  }
+  rafId = requestAnimationFrame(tick);
+}
+
+function handleScan(registrationId) {
+  busy = true;
+  if (navigator.vibrate) navigator.vibrate(80);
+  show('', 'กำลังบันทึก…', registrationId);
+  google.script.run
+    .withSuccessHandler(res => {
+      const type = res.ok ? 'ok' : (res.duplicate ? 'warn' : 'err');
+      show(type, res.message, res.uid ? 'UID: ' + res.uid : '');
+      setTimeout(() => { busy = false; }, 1500);
+    })
+    .withFailureHandler(err => {
+      show('err', 'เกิดข้อผิดพลาด', err && err.message ? err.message : String(err));
+      setTimeout(() => { busy = false; }, 1500);
+    })
+    .processCheckIn(registrationId);   // ฟังก์ชันใน Code.gs
+}
+
+startBtn.addEventListener('click', startCamera);
+stopBtn.addEventListener('click', () => { stopCamera(); show('', 'ปิดกล้องแล้ว', ''); });
+document.addEventListener('visibilitychange', () => { if (document.hidden && stream) stopCamera(); });
+</script>
+</body>
+</html>
