@@ -32,6 +32,7 @@
   #result.err{background:var(--errbg);color:var(--err)}
   #result.warn{background:var(--warnbg);color:var(--warn)}
   #result small{display:block;opacity:.85;word-break:break-all}
+  #result .name{display:block;font-size:1.25rem;font-weight:700;margin:4px 0 6px;color:var(--ink)}
   canvas{display:none}
 </style>
 </head>
@@ -57,7 +58,7 @@
 <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js"></script>
 <script>
 // ใส่ URL ของ Web App (ลงท้ายด้วย /exec) หลัง Deploy Apps Script
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzZRo3l5XJ_Ogznp8nVmyudrFzYaD2E-tYZT_bdGLjlAhe0yU3pe1UrMonHwOJE4WI-dQ/exec';
+const APPS_SCRIPT_URL = 'PASTE_YOUR_WEB_APP_URL_HERE';
 
 const video = document.getElementById('video');
 const canvas = document.getElementById('canvas');
@@ -69,10 +70,11 @@ const resultEl = document.getElementById('result');
 
 let stream = null, rafId = null, busy = false, lastCode = '', lastTime = 0;
 
-function show(type, title, detail) {
+function show(type, title, detail, name) {
   resultEl.className = type;
   resultEl.innerHTML = '';
   const s = document.createElement('strong'); s.textContent = title; resultEl.appendChild(s);
+  if (name) { const n = document.createElement('span'); n.className = 'name'; n.textContent = name; resultEl.appendChild(n); }
   if (detail) { const d = document.createElement('small'); d.textContent = detail; resultEl.appendChild(d); }
 }
 
@@ -120,21 +122,40 @@ function tick() {
   rafId = requestAnimationFrame(tick);
 }
 
-function handleScan(registrationId) {
+// ดึง UID จากข้อความใน QR (รองรับ LINE UID รูปแบบ U + เลขฐาน 16 จำนวน 32 ตัว; ถ้าไม่เจอใช้ข้อความทั้งหมด)
+function extractUid(text) {
+  const m = text.match(/U[0-9a-f]{32}/i);
+  return m ? m[0] : text.trim();
+}
+
+function handleScan(raw) {
+  const registrationId = extractUid(raw);
+  if (!APPS_SCRIPT_URL.startsWith('https://script.google.com/')) {
+    show('err', 'ยังไม่ได้ตั้งค่า URL', 'แก้ค่า APPS_SCRIPT_URL ในไฟล์ scan_reward.html ให้เป็น URL ของ Web App (ลงท้ายด้วย /exec)');
+    return;
+  }
   busy = true;
   if (navigator.vibrate) navigator.vibrate(80);
   show('', 'กำลังบันทึก…', registrationId);
-  fetch(APPS_SCRIPT_URL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'text/plain;charset=utf-8' },   // ใช้ text/plain เพื่อเลี่ยง CORS preflight
-    body: JSON.stringify({ action: 'checkin', registrationId: registrationId })
-  })
-    .then(r => r.json())
+  // ใช้ GET (ไม่มี header พิเศษ) เพื่อให้ผ่านการ redirect ของ Apps Script บน Safari/iOS ได้เสถียรกว่า POST
+  const url = APPS_SCRIPT_URL + '?action=checkin&uid=' + encodeURIComponent(registrationId) + '&_=' + Date.now();
+  fetch(url, { method: 'GET', redirect: 'follow', credentials: 'omit', cache: 'no-store' })
+    .then(r => r.text())
+    .then(txt => {
+      let res;
+      try { res = JSON.parse(txt); }
+      catch (e) {
+        throw new Error('เซิร์ฟเวอร์ไม่ได้ตอบกลับเป็น JSON — ตรวจสอบว่า URL ลงท้ายด้วย /exec และตั้งสิทธิ์เป็น Anyone แล้ว Deploy เวอร์ชันใหม่ (ได้รับ: ' + txt.slice(0, 60).replace(/\s+/g, ' ') + ')');
+      }
+      return res;
+    })
     .then(res => {
       const type = res.ok ? 'ok' : (res.duplicate ? 'warn' : 'err');
-      show(type, res.message, res.uid ? 'UID: ' + res.uid : '');
+      show(type, res.message, res.uid ? 'UID: ' + res.uid : '', res.name || '');
     })
-    .catch(err => show('err', 'เชื่อมต่อเซิร์ฟเวอร์ไม่ได้', err && err.message ? err.message : String(err)))
+    .catch(err => show('err', 'เชื่อมต่อเซิร์ฟเวอร์ไม่ได้',
+      (err && err.message ? err.message : String(err)) +
+      ' — ตรวจสอบว่า Web App ตั้งสิทธิ์เป็น Anyone, URL ลงท้ายด้วย /exec และ Deploy เวอร์ชันล่าสุดแล้ว'))
     .finally(() => setTimeout(() => { busy = false; }, 1500));
 }
 
